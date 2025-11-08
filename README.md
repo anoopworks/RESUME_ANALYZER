@@ -27,20 +27,6 @@ This project demonstrates expertise in GenAI application engineering, LLM prompt
 
 The system employs a microservices approach using Python, separating the presentation layer from the core business logic and AI processing.
 
-### High-Level Data Flow
-
-```mermaid
-graph TD
-    A[Resume (PDF Upload)] --> B(Frontend / Streamlit);
-    B --> C(Backend / FastAPI API);
-    C --> D[PDF Extraction Engine];
-    D --> E(Preprocessing & Prompt Engineering);
-    E --> F[Google Gemini Model (LLM)];
-    F --> G(AI Analysis - Structured JSON);
-    G --> C;
-    C --> B;
-    B --> H[Web Interface Display];
-````
 
 ### Components and Technologies
 
