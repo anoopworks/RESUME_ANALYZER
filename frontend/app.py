@@ -4,7 +4,11 @@ import json
 from io import BytesIO
 
 # --- Configuration ---
-FASTAPI_URL = "http://localhost:8000" # Update if FastAPI is hosted elsewhere
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+FASTAPI_URL = os.getenv("FASTAPI_URL", "http://localhost:8000") # Update if FastAPI is hosted elsewhere
 
 st.set_page_config(
     page_title="AI Resume Analyzer (Gemini-Powered)",

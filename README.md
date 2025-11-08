@@ -1,128 +1,173 @@
-That's a crucial step\! A professional and comprehensive `README.md` file is essential for documentation, project portfolio presentation, and guiding future contributors.
+# AI Resume Analyzer (Gemini-Powered)
 
-Here is a full `README.md` file tailored specifically for your **AI Resume Analyzer** project, incorporating all the details from your roadmap.
+A full-stack application that analyzes resumes using Google Gemini AI, providing structured feedback for Data Science and AI roles.
 
------
+## 🏗️ Architecture
 
-## 📄 `README.md`
+- **Backend**: FastAPI (Python) - Handles PDF parsing and AI analysis
+- **Frontend**: Streamlit (Python) - User interface for uploading resumes
+- **AI Model**: Google Gemini 2.5 Flash
 
+## 📋 Prerequisites
 
-# 🚀 AI Resume Analyzer using Google Generative AI (Gemini)
+- Python 3.8+
+- Google Gemini API Key
+- Git
 
-## 🎯 Project Objective
+## 🚀 Quick Start
 
-The **AI Resume Analyzer** is an intelligent system designed to streamline and objectify the resume screening process. Utilizing the power of Google's Gemini large language model, the tool provides candidates with structured, data-driven insights—including an overall score, specific strengths, weaknesses, and actionable improvement recommendations—to optimize their resumes for highly competitive Data Science and AI roles.
-
-This project demonstrates expertise in GenAI application engineering, LLM prompt design, and end-to-end full-stack AI system development.
-
-## ✨ Features
-
-* **PDF Resume Ingestion:** Accepts and robustly extracts text from PDF documents.
-* **Gemini LLM Analysis:** Leverages Google Gemini (via structured prompting) for contextual evaluation.
-* **Structured JSON Output:** Guarantees consistent, machine-readable analysis data.
-* **Objective Scoring:** Provides an `Overall_Score` (0-100) based on impact, technical depth, and relevance.
-* **Interactive Web UI:** Presents analysis results (score, summary, strengths, weaknesses, suggestions) in a clean, user-friendly Streamlit interface.
-
-## ⚙️ System Architecture
-
-The system employs a microservices approach using Python, separating the presentation layer from the core business logic and AI processing.
-
-
-### Components and Technologies
-
-| Layer | Tools / Frameworks | Function |
-| :--- | :--- | :--- |
-| **Model** | `google-genai` (Gemini 2.5 Flash) | Generative reasoning, structured analysis. |
-| **Backend** | **FastAPI** (Python), `uvicorn` | API serving, file handling, LLM request orchestration. |
-| **Frontend** | **Streamlit** | Rapid, interactive UI development and results visualization. |
-| **PDF Handling** | `pdfplumber` | Robust text extraction from complex PDF formats. |
-| **Data Types** | `Pydantic` | Enforcing strict JSON output schema. |
-| **Environment** | `.env`, `python-dotenv` | Secure management of API keys. |
-
-## 💻 Setup and Installation
-
-### Prerequisites
-
-  * Python 3.9+
-  * A valid **Google AI API Key** (for Gemini access).
-
-### 1\. Clone the Repository
+### 1. Clone the Repository
 
 ```bash
-git clone [YOUR_REPO_URL]
-cd AI_RESUME_ANALYZER
+git clone https://github.com/anoopworks/AI_RESUME_RAG.git
+cd AI_RESUME_RAG
 ```
 
-### 2\. Install Dependencies
-
-Install all necessary packages for both frontend and backend environments:
+### 2. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3\. Configure Environment Variables
+### 3. Set Up Environment Variables
 
-Create a file named **`.env`** inside the `backend/` directory and add your API key:
+Create a `.env` file in the root directory:
 
-**`backend/.env`**
-
-```text
-GEMINI_API_KEY="YOUR_ACTUAL_GEMINI_API_KEY_HERE"
+```env
+GEMINI_API_KEY=your_gemini_api_key_here
+FASTAPI_URL=http://localhost:8000
 ```
 
-## ▶️ Running the Application
+### 4. Run the Application
 
-The application requires two separate terminal processes: one for the FastAPI backend and one for the Streamlit frontend.
+#### Option A: Run Both Servers (Recommended)
 
-### Step A: Start the Backend (API Server)
-
-The backend runs on port `8000`.
-
+Double-click `start_both.bat` or run:
 ```bash
-uvicorn backend.main:app --reload --port 8000
+start_both.bat
 ```
 
-*(Leave this terminal running.)*
+#### Option B: Run Servers Separately
 
-### Step B: Start the Frontend (Web UI)
-
-The frontend runs on the default Streamlit port, usually `8501`.
-
+**Terminal 1 - Backend:**
 ```bash
+start_backend.bat
+# Or manually:
+cd backend
+uvicorn main:app --reload --port 8000
+```
+
+**Terminal 2 - Frontend:**
+```bash
+start_frontend.bat
+# Or manually:
 streamlit run frontend/app.py
 ```
 
-*(This command will automatically open the web application in your browser.)*
+### 5. Access the Application
 
-## 💡 Enhanced Prompting Strategy
+- **Frontend**: http://localhost:8501
+- **Backend API**: http://localhost:8000
+- **API Docs**: http://localhost:8000/docs
 
-The core intelligence resides in the prompt engineering layer (`backend/analyzer_service.py`). We use a highly structured, multi-step prompt to ensure high-quality output:
+## 🌐 Deployment
 
-1.  **Persona Assignment:** Instructing Gemini to act as an **"Expert Senior Hiring Manager and AI Resume Analyst."**
-2.  **Explicit Criteria:** Providing detailed scoring criteria (e.g., 40% Impact, 30% Technical Depth).
-3.  **Strict Schema Enforcement:** Utilizing the Gemini API's `response_schema` and `response_mime_type="application/json"` to guarantee the `ResumeAnalysis` Pydantic model is returned consistently.
+### Backend Deployment (Render/Railway/Heroku)
 
-## 🗺️ Development Roadmap (Completed Milestones)
+1. **Render** (Recommended):
+   - Push code to GitHub
+   - Connect repository to Render
+   - Use `render.yaml` configuration
+   - Set `GEMINI_API_KEY` environment variable
 
-| Phase | Key Tasks | Status |
-| :--- | :--- | :--- |
-| Phase 1 | Planning & Setup, Architecture Design | **Completed** |
-| Phase 2 | Data Ingestion (PDF Upload & Extraction) | **Completed** |
-| Phase 3 | Model Integration (Gemini API Connection) | **Completed** |
-| Phase 4 | Output Structuring (JSON Schema & Prompt Engineering) | **Completed** |
-| Phase 5 | Frontend Development (Streamlit Dashboard) | **Completed** |
-| Phase 6 | Integration & Testing (Working Prototype) | **Completed** |
+2. **Railway**:
+   - Connect GitHub repository
+   - Use `Procfile` for deployment
+   - Set environment variables
 
-## 🔮 Future Enhancements (Phase 7)
+3. **Heroku**:
+   - Use `Procfile` for deployment
+   - Set config vars in Heroku dashboard
 
-  * **Job Description Alignment:** Implement a feature to compare the resume against a target JD for ATS-style matching.
-  * **Skill Extraction:** Use advanced NLP for categorical extraction of technical vs. soft skills.
-  * **Resume Optimization Assistant:** Allow the AI to generate rewritten, optimized sentences or sections based on its feedback.
-  * **Multi-Model Evaluation:** Integrate and compare results from other models (e.g., LLaMA 3).
+### Frontend Deployment (Streamlit Cloud)
 
------
+1. Push code to GitHub
+2. Go to [Streamlit Cloud](https://streamlit.io/cloud)
+3. Connect your GitHub repository
+4. Set environment variables:
+   - `FASTAPI_URL`: Your deployed backend URL
+   - `GEMINI_API_KEY`: Your Gemini API key
+5. Deploy!
 
+### Important Notes
+
+⚠️ **GitHub Pages Limitation**: GitHub Pages only hosts static websites. For Python applications:
+- Use **Streamlit Cloud** for the frontend (free)
+- Use **Render/Railway** for the backend (free tiers available)
+
+## 📁 Project Structure
 
 ```
+AI_RESUME_RAG/
+├── backend/
+│   ├── main.py              # FastAPI application
+│   ├── analyzer_service.py  # Gemini AI integration
+│   ├── requirements.txt     # Backend dependencies
+│   └── utils/
+│       └── pdf_parser.py   # PDF text extraction
+├── frontend/
+│   └── app.py              # Streamlit UI
+├── uploaded_resumes/       # Temporary file storage
+├── requirements.txt        # All dependencies
+├── start_backend.bat      # Backend startup script
+├── start_frontend.bat     # Frontend startup script
+├── start_both.bat         # Start both servers
+├── Procfile               # Heroku/Railway config
+├── render.yaml            # Render deployment config
+└── README.md              # This file
 ```
+
+## 🔧 Configuration
+
+### Backend Configuration
+
+The backend runs on port 8000 by default. To change:
+```bash
+uvicorn backend.main:app --reload --port YOUR_PORT
+```
+
+### Frontend Configuration
+
+Update `FASTAPI_URL` in `.env` or environment variables to point to your deployed backend.
+
+## 📝 API Endpoints
+
+- `GET /` - Health check
+- `POST /analyze-resume` - Upload PDF and get analysis
+  - **Request**: Multipart form data with PDF file
+  - **Response**: JSON with analysis results
+
+## 🛠️ Development
+
+### Running Tests
+
+```bash
+# Test backend
+curl http://localhost:8000/
+
+# Test API endpoint
+curl -X POST "http://localhost:8000/analyze-resume" \
+  -F "file=@path/to/resume.pdf"
+```
+
+## 📄 License
+
+This project is open source and available under the MIT License.
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## 📧 Contact
+
+For questions or issues, please open an issue on GitHub.

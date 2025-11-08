@@ -1,0 +1,12 @@
+# Backend Requirements
+pydantic
+python-dotenv
+fastapi
+uvicorn
+google-genai
+pdfplumber
+
+# Frontend Requirements
+streamlit
+httpx
+
