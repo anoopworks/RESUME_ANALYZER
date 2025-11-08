@@ -31,16 +31,11 @@
    - **DO NOT** initialize with README, .gitignore, or license
    - Click "Create repository"
 
-2. **Initialize Git and push:**
+2. **Add remote and push (Git is already initialized and committed):**
    ```bash
-   git init
-   git add .
-   git commit -m "Initial commit: AI Resume Analyzer project"
-   git branch -M main
-   git remote add origin https://github.com/YOUR_USERNAME/AI_RESUME_RAG.git
+   git remote add origin https://github.com/anoopworks/AI_RESUME_RAG.git
    git push -u origin main
    ```
-   (Replace `YOUR_USERNAME` with your actual GitHub username)
 
 ## What's Excluded
 
