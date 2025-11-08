@@ -1,0 +1,11 @@
+# General
+pydantic
+python-dotenv
+# Backend (FastAPI & Services)
+fastapi
+uvicorn
+google-genai
+pdfplumber # Used for robust PDF text extraction
+# Frontend (Streamlit)
+streamlit
+httpx # For making requests from Streamlit to the FastAPI backend
