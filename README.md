@@ -6,7 +6,7 @@ Here is a full `README.md` file tailored specifically for your **AI Resume Analy
 
 ## 📄 `README.md`
 
-````markdown
+
 # 🚀 AI Resume Analyzer using Google Generative AI (Gemini)
 
 ## 🎯 Project Objective
