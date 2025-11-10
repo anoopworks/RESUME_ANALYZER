@@ -20,7 +20,7 @@ class ResumeAnalysis(BaseModel):
 class AnalyzerService:
     def __init__(self):
         # Initialize Gemini Client
-        api_key = os.getenv("GOOGLE_API_KEY")
+        api_key = os.getenv("GEMINI_API_KEY")
         if not api_key:
             raise ValueError("GEMINI_API_KEY not found. Please set it in a .env file.")
         self.client = genai.Client(api_key=api_key)
